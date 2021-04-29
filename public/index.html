@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>React Chat App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+      
+    </div>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+      (function(){
+      var measurer = $('<span>', {
+                      style: "display:inline-block;word-break:break-word;visibility:hidden;white-space:pre-wrap;"})
+        .appendTo('body');
+      function initMeasurerFor(textarea){
+        if(!textarea[0].originalOverflowY){
+          textarea[0].originalOverflowY = textarea.css("overflow-y");    
+        }  
+        var maxWidth = textarea.css("max-width");
+        measurer.text(textarea.text())
+            .css("max-width", maxWidth == "none" ? textarea.width() + "px" : maxWidth)
+            .css('font',textarea.css('font'))
+            .css('overflow-y', textarea.css('overflow-y'))
+            .css("max-height", textarea.css("max-height"))
+            .css("min-height", textarea.css("min-height"))
+            .css("min-width", textarea.css("min-width"))
+            .css("padding", textarea.css("padding"))
+            .css("border", textarea.css("border"))
+            .css("box-sizing", textarea.css("box-sizing"))
+      }
+      function updateTextAreaSize(textarea){
+        textarea.height(measurer.height());
+        var w = measurer.width();
+        if(textarea[0].originalOverflowY == "auto"){
+            var mw = textarea.css("max-width");
+            if(mw != "none"){
+              if(w == parseInt(mw)){
+                textarea.css("overflow-y", "auto");
+              } else {
+                textarea.css("overflow-y", "hidden");
+              }
+            }
+        }
+        textarea.width(w + 2);
+      }
+      $('textarea.message-input').on({
+          input: function(){      
+              var text = $(this).val();  
+              if($(this).attr("preventEnter") == undefined){
+                text = text.replace(/[\n]/g, "<br>&#8203;");
+              }
+              measurer.html(text);                       
+              updateTextAreaSize($(this));       
+          },
+          focus: function(){
+          initMeasurerFor($(this));
+          },
+          keypress: function(e){
+            if(e.which == 13 && $(this).attr("preventEnter") != undefined){
+              e.preventDefault();
+            }
+          }
+      });
+      })();
+    </script> -->
+
+  </body>
+</html>
