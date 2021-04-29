@@ -9,13 +9,13 @@ export const ChatProvider = ({ children, authUser }) => {
     const [chatConfig, setChatConfig] = useState();
     const [selectedChat, setSelectedChat] = useState();
 
-    const createChatClick = () => {
-        newChat(chatConfig, { title: '' });
+    const createChatClick = (title) => {
+        newChat(chatConfig, { title: title });
     };
     
     const deleteChatClick = chat => {
         // only allow chat admin to delete chat, leave chat otherwise
-        const isAdmin = chat.admin === chatConfig.userName;
+        const isAdmin = chat.admin.username === chatConfig.userName;
         if (isAdmin && window.confirm('Are you sure you want to delete this chat?')) {
             deleteChat(chatConfig, chat.id);
         } else if (window.confirm('Are you sure you want to leave this chat?')) {
@@ -37,11 +37,11 @@ export const ChatProvider = ({ children, authUser }) => {
             fb.firestore
                 .collection('chatUsers')
                 .doc(authUser.uid)
-                .onSnapshot(snap => {
+                .onSnapshot(res => {
                     setChatConfig({
                         userSecret: authUser.uid,
-                        avatar: snap.data().avatar,
-                        userName: snap.data().userName,
+                        avatar: res.data().avatar,
+                        userName: res.data().userName,
                         projectID: 'df2a398d-a6b6-41ce-b4fe-915701fa969d',
                     });
                 });

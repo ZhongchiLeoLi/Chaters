@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { sendMessage, isTyping } from 'react-chat-engine';
 import TextareaAutosize from 'react-textarea-autosize';
 import { SendOutlined, PictureOutlined } from '@ant-design/icons';
+import FeatherIcon from 'feather-icons-react';
+
 
 const ChatForm = (props) => {
     const { chatId, creds } = props;
@@ -45,7 +47,7 @@ const ChatForm = (props) => {
             />
             <label className='upload-button' htmlFor='upload-button'>
                 <span className='image-button'>
-                    <PictureOutlined className='picture-icon' />
+                    <FeatherIcon className='image-icon' icon="image" size='20' />
                 </span>
             </label>
             <input 
@@ -56,7 +58,7 @@ const ChatForm = (props) => {
                 onChange={handleUpload}
             />
             <button type='submit' className='send-button'>
-                <SendOutlined className='send-icon' />
+                <FeatherIcon className='send-icon' icon="send" size='20' />
             </button>
         </form>
     );

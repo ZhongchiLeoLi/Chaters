@@ -12,20 +12,6 @@
     line-height: 1.4;
   }
   
-  .ce-chat-list {
-    background-color: #FFFFFF !important;
-  }
-  
-  .ce-chats-container {
-    background-color: #FFFFFF !important;
-  }
-  
-  .ce-active-chat-card {
-    background-color: #F7F8FA !important;
-    border: 4px solid #F7F8FA !important;
-    border-radius: 0px !important;
-  }
-  
   .chat-list {
     display: flex;
     flex-direction: column;
@@ -34,9 +20,59 @@
     position: relative;
   }
 
+  .chat-profile-container{
+    display: flex;
+    margin: 1rem;
+    margin-bottom: 0px;
+    padding: 1rem;
+    align-items: center;
+    border-bottom: 2px solid #EDF0F5;
+  }
+
+  .chat-profile-avatar {
+    max-width: 70px;
+    min-width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .upload-avatar:hover {
+    opacity: 85%;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .camera-icon-wrapper {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #E6EFEE;
+    margin-top: -1rem;
+    margin-left: -1rem;
+  }
+
+  .camera-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .profile-title {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    font-weight: 600;
+  }
+
+  .logout-button:hover {
+    opacity: 60%;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
   .chat-card {
     padding: 17px;
-    margin: 0.7rem 0.7rem 0 0.7rem;
+    margin: 0.25rem 0.7rem;
     border-radius: 10px;
     font-size: 1rem;
     transition: 0.2s;
@@ -44,11 +80,12 @@
 
   .chat-card:hover {
     cursor: pointer;
-    background-color: #E6EFEE;
+    background-color: #F1F9F7;
   }
 
   .chat-card-avatar {
-    width: 50px;
+    max-width: 50px;
+    min-width: 50px;
     height: 50px;
     border-radius: 50%;
     color: white;
@@ -56,6 +93,17 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    object-fit: cover;
+  }
+
+  .empty-avatar {
+    background-color: #ABD9C6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.45rem;
+    font-weight: 500;
+    color: #006655;
   }
 
   .chat-card-title {
@@ -63,26 +111,59 @@
     font-weight: 600;
   }
 
-  .new-chat-button {
-    position: sticky;
-    bottom: 0px;
-    padding: 0.7rem;
-    margin: 1.1rem;
-    font-size: 1rem;
-    border: none;
+  
+
+  .new-chat-form-container {
+    /* position: sticky; */
+    /* bottom: 0px; */
+    width: 100%;
+    /* padding: 10px 0px 18px 18px; */
+    /* background-color: #EDF0F5; */
+  }
+  
+  .new-chat-form {
+    overflow: hidden;
     border-radius: 20px;
-    background-color: #A1E5AB;
+    margin: 1.1rem;
+    /* border: 1px solid #3b2a50; */
+    background-color: white;
+    box-shadow: 0 4px 15px 0 #D0D3E3;
+    display: flex;
+  }
+  
+  .new-chat-input {
+    height: 54px;
+    width: calc(100% - 57px);
+    background-color: white;
+    border: 1px solid white;
+    padding: 15px 18px;
+    outline: none;
+    font-size: 1rem;
+    resize: none;
+  }
+  
+  .new-chat-button {
+    height: 42px;
+    background-color: #00A389;
+    color: white;
+    border: 1px solid white;
+    padding: 0px 15px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    align-self: flex-end;
+    font-size: 1.5rem;
+    line-height: 1;
     transition: 0.3s;
   }
 
   .new-chat-button:hover {
     cursor: pointer;
-    background-color: #8FE09B;
-    color: white;
+    opacity: 85%;
   }
 
   .ce-chat-subtitle-text {
-    color: #595959 !important;
+    color: #656F7B !important;
   }
   
   .ce-chat-form-container {
@@ -166,7 +247,7 @@
   }
   
   .chat-subtitle {
-    /* color: #7554a0; */
+    color: #535B65;
     font-weight: 400;
     font-size: 1rem;
     /* padding-top: 4px; */
@@ -190,11 +271,12 @@
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    color: white;
     text-align: center;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    object-fit: cover;
+    font-size: 1.1rem;
   }
   
   .message {
@@ -252,7 +334,7 @@
   
   .message-input {
     height: 40px;
-    width: calc(100% - 100px);
+    width: calc(100% - 115px);
     background-color: white;
     border: 1px solid white;
     padding: 15px 18px;
@@ -284,31 +366,21 @@
 
   .image-button {
     cursor: pointer;
-    padding: 0px 12px;
+    padding: 0px 16px;
     height: 100%;
   }
   
   .send-button {
     height: 42px;
-    background-color: #A1E5AB;
+    background-color: #00A389;
+    color: white;
     border: 1px solid white;
-    padding: 0px 18px;
+    padding: 0px 15px;
+    padding-top: 4px;
     margin-bottom: 5px;
     cursor: pointer;
     border-radius: 20px;
     align-self: flex-end;
-  }
-  
-  .send-icon {
-    top: 1px;
-    position: relative;
-    transform: rotate(-90deg);
-  }
-  
-  .picture-icon {
-    top: 1px;
-    position: relative;
-    font-size: 1rem;
   }
   
   /* FORM STYLES */

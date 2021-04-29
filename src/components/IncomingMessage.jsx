@@ -1,3 +1,5 @@
+import ChatAvatar from './ChatAvatar';
+
 const IncomingMessage = ({ lastMessage, nextMessage, message }) => {
     const isFirstMessageByUser = !lastMessage || lastMessage.sender.username !== message.sender.username;
     const isLastMessageByUser = !nextMessage || nextMessage.sender.username !== message.sender.username;
@@ -5,13 +7,14 @@ const IncomingMessage = ({ lastMessage, nextMessage, message }) => {
     return(
         <div className='message-row' style={{ marginTop: isFirstMessageByUser ? '22px' : '0' }}>
             {isFirstMessageByUser && (
-                <div style={{marginLeft: '65px', fontSize: '13px', width: '100%', color: '#717C89' }} >{message.sender.username}</div>
+                <div style={{marginLeft: '65px', fontSize: '13px', width: '100%', color: '#535B65' }} >{message.sender.username}</div>
             )}
             {isLastMessageByUser && (
-                <div 
-                    className='chat-avatar'
-                    style={{backgroundImage: `url(${message?.sender?.avatar})`}}
-                />
+                // <div 
+                //     className='chat-avatar'
+                //     style={{backgroundImage: `url(${message?.sender?.avatar})`}}
+                // />
+                <ChatAvatar username={message?.sender?.username} className='chat-avatar' />
             )}
             {message?.attachments?.length > 0
                 ? (
