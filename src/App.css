@@ -498,7 +498,7 @@
   background-color: unset;
 }
 
-.chat-title-button:hover, .remove-member-button:hover, .image-button:hover, .logout-button:hover {
+.chat-title-button:hover, .remove-member-button:hover, .image-button:hover, .logout-button:hover, .github-button:hover {
   filter:invert(50%);
   cursor: pointer;
   transition: 0.2s;

@@ -41,7 +41,10 @@ const ChatProfile = () => {
             />
             <div style={{width: '100%', display:'flex', justifyContent: 'space-between'}}>
                 <div className='profile-title'>{chatConfig.userName}</div>
-                <FeatherIcon className='logout-button' icon="log-out" onClick={() => fb.auth.signOut()} />
+                <div>
+                    <FeatherIcon className='github-button' icon="github" onClick={()=> window.open('https://github.com/ZhongchiLeoLi/Chaters', '_blank')} style={{marginRight: '0.8rem'}} />
+                    <FeatherIcon className='logout-button' icon="log-out" onClick={() => fb.auth.signOut()} />
+                </div>
             </div>
         </div>
     );
