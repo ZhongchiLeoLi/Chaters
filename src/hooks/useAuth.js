@@ -2,10 +2,10 @@ import { fb } from '../service';
 import { useEffect, useState } from 'react';
 
 // authUser is initialized as undefined
-// After the hook is resolved, authUser is set to sn user object or null for not logged in
+// After the hook is resolved, authUser is set to a user object or null for not logged in
 
 export const useAuth = () => {
-    const [authUser, setAuthUser] = useState(); // undefined | firebase.User | null
+    const [authUser, setAuthUser] = useState();
   
     useEffect(() => {
         const unsubscribe = fb.auth.onAuthStateChanged(user => {
@@ -21,4 +21,4 @@ export const useAuth = () => {
     return {
         authUser,
     };
-  };
+};

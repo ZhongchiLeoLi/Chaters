@@ -1,39 +1,41 @@
-import { useState } from "react";
 import { useChat } from '../context';
 import PuffLoader from 'react-spinners/PuffLoader';
 import ChatCard from './ChatCard';
 import NewChatForm from './NewChatForm';
-import { number } from "yup";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import ChatAvatar from "./ChatAvatar";
 import ChatProfile from './ChatProfile';
 
 
 const ChatList = (props) => {
-    const { myChats, createChatClick, chatConfig } = useChat();
+    const { chatConfig } = useChat();
     const { chats, activeChat, setActiveChat } = props;
 
-    console.log(props);
-    // const keys = Object.keys(chats);
-    // console.log(keys);
-
-    const handleClick = (event) => {
-
+    function compare(a, b) {
+        const dateA = new Date(chats[a].last_message.created);
+        const dateB = new Date(chats[b].last_message.created);
+        if ( dateA > dateB ) {
+            return -1;
+        }
+        if ( dateA < dateB ) {
+            return 1;
+        }
+        return 0;
     }
 
     const renderChats = () => {
         const keys = Object.keys(chats);
+        try {
+            keys.sort( compare );
+        } catch (error) {
+            window.location.reload(false);
+        }
+        
         return keys.map((key, index) => {
             const chat = chats[key];
-            
             const isSelected = key === activeChat.toString();
-
-            
-            // let avatar = ''
-            // const sentDate = (currentDate.getTime() - date.getTime()) / (1000 * 60 * 60 * 24) >= 7 ? date.toString().slice(4, 10) : date.toString().slice(0, 4);
-            // const sentDate = date.toString();
-
+            const hasNewMessages = chat.people.find(p => p.person.username === chatConfig.userName).last_read !== chat.last_message.id;
+         
             const selectChat = () => {
                 setActiveChat(parseInt(key));
             }
@@ -43,6 +45,7 @@ const ChatList = (props) => {
                     <ChatCard 
                         chat={chat}
                         isSelected={isSelected} 
+                        hasNewMessages={hasNewMessages}
                     />
                 </div>
             );
@@ -55,12 +58,10 @@ const ChatList = (props) => {
             <NewChatForm />
             <PerfectScrollbar className='chat-list'>
                 {renderChats()}
-            </PerfectScrollbar>
-            {/* <button className='new-chat-button' onClick={createChatClick}>New Chat</button> */}
-            
+            </PerfectScrollbar>            
         </div>
     :   <div style={{height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <PuffLoader color='#A1E5AB' loading={true} css='' size={100} />
+            <PuffLoader color='#00A389' loading={true} css='' size={100} />
         </div>
     );
 

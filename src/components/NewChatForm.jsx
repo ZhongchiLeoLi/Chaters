@@ -1,15 +1,16 @@
 import { useChat } from '../context';
 import { useState } from 'react';
-import { SendOutlined, PictureOutlined } from '@ant-design/icons';
+import FeatherIcon from 'feather-icons-react';
+import { newChat } from 'react-chat-engine';
 
 const NewChatForm = () => {
-    const { createChatClick } = useChat();
+    const { chatConfig } = useChat();
     const [value, setValue] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault(); // prevent browser from refreshing
         const title = value.trim();
-        if(title.length) createChatClick(title);
+        if(title.length) newChat(chatConfig, { title: title });;
         setValue('');
     }
 
@@ -29,7 +30,7 @@ const NewChatForm = () => {
                     required
                 />
                 <button type='submit' className='new-chat-button'>
-                    +
+                    <FeatherIcon size='20' icon='plus' />
                 </button>
             </form>
         </div>

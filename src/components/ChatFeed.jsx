@@ -3,23 +3,19 @@ import OutgoingMessage from './OutgoingMessage';
 import IncomingMessage from './IncomingMessage';
 import ScrollableFeed from 'react-scrollable-feed';
 import PuffLoader from 'react-spinners/PuffLoader';
-import { useState } from 'react';
-
-
-// import { ChatHeader } from 'react-chat-engine';
+import ChatAvatar from "./ChatAvatar";
 
 const ChatFeed = (props) => {
-    // console.log(props);
-    const [loading, setLoading] = useState(true);
     const { chats, activeChat, userName, messages } = props;
     const chat = chats && chats[activeChat];
 
     const renderReadReceipts = (message, isOutgoingMessage) => {
         return chat.people.map((person, index) => person.last_read === message.id && (
-            <div 
+            <ChatAvatar 
                 key={`read_${index}`}
+                username={person.person.username}
                 className='read-receipt'
-                style={{ float: isOutgoingMessage ? 'right' : 'left', backgroundImage: `url(${person?.person?.avatar})` }}
+                style={{ float: isOutgoingMessage ? 'right' : 'left', display: 'inline !important' }}
             />
         ));
     }
@@ -31,9 +27,6 @@ const ChatFeed = (props) => {
             const lastMessageKey = index === 0 ? null : keys[index - 1];
             const nextMessageKey = index === messages.length - 1 ? null : keys[index + 1];
             const isOutgoingMessage = userName === message.sender.username;
-            
-            // console.log(isOutgoingMessage);
-
             return (
                 <div key={`msg_${index}`} >
                     <div className='message-block'>
@@ -51,14 +44,12 @@ const ChatFeed = (props) => {
         })
     }
 
-
     return ( !!chat
         ?   <div className='chat-feed'>
-                {/* <ChatHeader /> */}
                 <div className='chat-title-container'>
                     <div className='chat-title'>{chat.title}</div>
                     <div className='chat-subtitle'>
-                        {chat.people.map((person) => ` ${person.person.username}`)}
+                        {chat.people.map((person) => { return person.person.username; }).join(', ')}
                     </div>
                 </div>
                 <ScrollableFeed className='chat-messages'>
@@ -69,7 +60,7 @@ const ChatFeed = (props) => {
                 </div>
             </div>
         :   <div style={{height: '100%', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <PuffLoader color='#A1E5AB' loading={true} css='' size={100} />
+                <PuffLoader color='#00A389' loading={true} css='' size={100} />
             </div>
     );
 }

@@ -1,4 +1,5 @@
 import ChatAvatar from './ChatAvatar';
+import ModalImage from "react-modal-image";
 
 const IncomingMessage = ({ lastMessage, nextMessage, message }) => {
     const isFirstMessageByUser = !lastMessage || lastMessage.sender.username !== message.sender.username;
@@ -10,19 +11,16 @@ const IncomingMessage = ({ lastMessage, nextMessage, message }) => {
                 <div style={{marginLeft: '65px', fontSize: '13px', width: '100%', color: '#535B65' }} >{message.sender.username}</div>
             )}
             {isLastMessageByUser && (
-                // <div 
-                //     className='chat-avatar'
-                //     style={{backgroundImage: `url(${message?.sender?.avatar})`}}
-                // />
                 <ChatAvatar username={message?.sender?.username} className='chat-avatar' />
             )}
             {message?.attachments?.length > 0
                 ? (
-                    <img 
-                        src={message.attachments[0].file}
-                        alt='attached-image'
-                        className='chat-image'
-                        style={{ marginLeft: isLastMessageByUser ? '12px' : '50px' }}
+                    <ModalImage
+                        className={`incoming-chat-image ${isLastMessageByUser ? 'last' : ''}`}
+                        small={message.attachments[0].file}
+                        large={message.attachments[0].file}
+                        hideDownload={true}
+                        hideZoom={true}
                     />
                 ) : (
                     <div className='message' style={{ float: 'left', backgroundColor: '#FFFFFF', marginLeft: isLastMessageByUser ? '12px' : '50px', borderBottomLeftRadius: isLastMessageByUser ? '22px' : '5px', borderTopLeftRadius: isFirstMessageByUser ? '22px' : '5px' }}>
@@ -30,7 +28,6 @@ const IncomingMessage = ({ lastMessage, nextMessage, message }) => {
                     </div>
                 )
             }
-            
         </div>
     );
 }

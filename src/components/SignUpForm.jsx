@@ -4,7 +4,6 @@ import FormField from './FormField';
 import * as Yup from 'yup';
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import axios from 'axios';
 
 const SignUpForm = () => {
     const history = useHistory();
@@ -84,7 +83,7 @@ const SignUpForm = () => {
 
                             <div align='center'>
                                 <button disabled={ isSubmitting || !isValid } type='submit' className='button'>
-                                    <span>Start Chatting</span>
+                                    <span>Join Chaters!</span>
                                 </button>
                             </div>
                         </Form>
