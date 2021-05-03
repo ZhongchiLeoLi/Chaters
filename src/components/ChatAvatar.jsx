@@ -8,7 +8,7 @@ const ChatAvatar = ({ chat, username, className, style }) => {
 
     useEffect(() => {
         if((className === 'chat-card-avatar' || className === 'chat-setting-avatar') && chat?.people.length > 2) {
-            setAvatar('https://user-images.githubusercontent.com/60017285/116576214-5c9d8d00-a8dd-11eb-8803-7e95d0778708.png');
+            setAvatar('https://github.com/ZhongchiLeoLi/Chaters/blob/master/public/groupAvatar.png?raw=true');
         } else {
             fb.firestore
                 .collection('chatUsers')
