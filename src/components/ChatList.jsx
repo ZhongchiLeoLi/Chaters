@@ -27,29 +27,28 @@ const ChatList = (props) => {
         const keys = Object.keys(chats);
         try {
             keys.sort( compare );
-        } catch (error) {
-            window.location.reload(false);
-        }
-        
-        return keys.map((key, index) => {
-            const chat = chats[key];
-            const isSelected = key === activeChat.toString();
-            const hasNewMessages = chat.people.find(p => p.person.username === chatConfig.userName).last_read !== chat.last_message.id;
-         
-            const selectChat = () => {
-                setActiveChat(parseInt(key));
-            }
+            return keys.map((key, index) => {
+                const chat = chats[key];
+                const isSelected = key === activeChat.toString();
+                const hasNewMessages = chat.people.find(p => p.person.username === chatConfig.userName).last_read !== chat.last_message.id;
+            
+                const selectChat = () => {
+                    setActiveChat(parseInt(key));
+                }
 
-            return (
-                <div key={`cht_${index}`} onClick={selectChat} >                
-                    <ChatCard 
-                        chat={chat}
-                        isSelected={isSelected} 
-                        hasNewMessages={hasNewMessages}
-                    />
-                </div>
-            );
-        });
+                return (
+                    <div key={`cht_${index}`} onClick={selectChat} >                
+                        <ChatCard 
+                            chat={chat}
+                            isSelected={isSelected} 
+                            hasNewMessages={hasNewMessages}
+                        />
+                    </div>
+                );
+            });
+        } catch (error) {
+            window.location.reload();
+        }
     }
 
     return ( !!chats
