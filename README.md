@@ -13,7 +13,7 @@ Sign up your own dummy account, or login with the credentials below to use the c
 * React
 * Firebase
 * [Chat Engine](https://chatengine.io/)
-* Vercel
+* [Vercel](https://vercel.com/)
 
 ## This application gives users the ability to:
 
