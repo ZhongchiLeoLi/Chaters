@@ -20,6 +20,7 @@ Sign up your own dummy account, or login with the credentials below to use the c
 * Change profile pictures
 * Send/receive chat messages and images
 * Create new chat rooms
+* Edit chat room names
 * Add new members to chat rooms
 * Remove existing members from chat rooms
 * Leave/delete chat rooms
