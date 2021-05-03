@@ -182,7 +182,7 @@
   }
 
   .upload-avatar:hover {
-    opacity: 85%;
+    filter: brightness(80%);
     cursor: pointer;
     transition: 0.3s;
   }
@@ -282,12 +282,12 @@
     align-self: flex-end;
     font-size: 1.5rem;
     line-height: 1;
-    transition: 0.3s;
   }
 
-  .new-chat-button:hover {
+  .new-chat-button:hover, .send-button:hover {
     cursor: pointer;
-    opacity: 85%;
+    filter: brightness(120%);
+    transition: 0.2s;
   }
 
 /* Chat Feed   */
@@ -454,12 +454,6 @@
     align-self: flex-end;
   }
 
-  .send-button:hover {
-    opacity: 85%;
-    transition: 0.2s;
-  }
-
-
 /* ChatSetting */
 .chat-setting-profile {
   display: flex;
@@ -505,7 +499,7 @@
 }
 
 .chat-title-button:hover, .remove-member-button:hover, .image-button:hover, .logout-button:hover {
-  opacity: 60%;
+  filter:invert(50%);
   cursor: pointer;
   transition: 0.2s;
 }
