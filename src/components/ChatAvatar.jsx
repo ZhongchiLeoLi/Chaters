@@ -22,7 +22,7 @@ const ChatAvatar = ({ chat, username, className, style }) => {
                 });
         }
         return () => setAvatar('');
-    }, [chat, chatConfig, username]);
+    }, [chat, chatConfig, username, className]);
 
     return avatar ? (
         <img className={className} src={avatar} alt={`${username}'s avatar`} style={style}/>

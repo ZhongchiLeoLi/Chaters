@@ -20,7 +20,7 @@ const ChatForm = (props) => {
     }
 
     const handleEnter = (event) => {
-        if(event.keyCode == 13 && event.shiftKey == false) {
+        if(event.keyCode == 13 && event.shiftKey === false) {
             event.preventDefault();
             handleSubmit(event);
           }
