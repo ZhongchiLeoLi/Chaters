@@ -3,7 +3,7 @@ import { getOtherPeople } from 'react-chat-engine';
 import SelectSearch from 'react-select-search';
 import { useEffect, useState } from 'react';
 import AddMemberOption from './AddMemberOption'
-import fuzzySearch from 'react-select-search/src/fuzzySearch'
+import fuzzySearch from '../utils/fuzzySearch'
 
 const AddMembers = ({ chat }) => {
     const { chatConfig } = useChat();
