@@ -83,7 +83,7 @@ const SignUpForm = () => {
 
                             <div align='center'>
                                 <button disabled={ isSubmitting || !isValid } type='submit' className='button'>
-                                    <span>Join Chaters!</span>
+                                    <span>Join Chatter!</span>
                                 </button>
                             </div>
                         </Form>
