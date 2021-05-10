@@ -2,16 +2,25 @@ import { fb } from '../service/firebase';
 import { Formik, Form } from 'formik';
 import FormField from './FormField';
 import * as Yup from 'yup';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const LoginForm = () => {
     const history = useHistory();
     const [serverError, setServerError] = useState('');
+    const [isDemo, setIsDemo] = useState(false);
+
+    useEffect (() => {
+        console.log(isDemo);
+    }, [isDemo]);
 
     const initialValues = {
         email: '',
         password: '',
+    };
+    const demoValues = {
+        email: 'demo@gmail.com',
+        password: 'demodemo',
     };
     const validationSchema = Yup.object().shape({
         email: Yup.string().required('Required'),
@@ -34,7 +43,7 @@ const LoginForm = () => {
                     setServerError('Oops, something went wrong.');
                   }
                 })
-            .finally(() => setSubmitting(false));
+            .finally(() => {setSubmitting(false);});
     };
 
     return(
@@ -44,8 +53,9 @@ const LoginForm = () => {
                 <Formik
                     onSubmit={login}
                     validateOnMount={true}
-                    initialValues={{initialValues}}
+                    initialValues={isDemo===true ? demoValues : initialValues}
                     validationSchema={validationSchema}
+                    enableReinitialize={true}
                 >
                     {({ isValid, isSubmitting }) => (
                         <Form>
@@ -62,6 +72,10 @@ const LoginForm = () => {
                             <div align='center'>
                                 <button disabled={ isSubmitting || !isValid } type='submit' className='button'>
                                     <span>Begin Chatting</span>
+                                </button> 
+                                <br /> or <br />
+                                <button className='button' onClick={() => setIsDemo(true)}>
+                                    <span>Login as Demo</span>
                                 </button>
                             </div>
                         </Form>
