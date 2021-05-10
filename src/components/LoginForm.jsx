@@ -2,7 +2,7 @@ import { fb } from '../service/firebase';
 import { Formik, Form } from 'formik';
 import FormField from './FormField';
 import * as Yup from 'yup';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const LoginForm = () => {
@@ -10,18 +10,16 @@ const LoginForm = () => {
     const [serverError, setServerError] = useState('');
     const [isDemo, setIsDemo] = useState(false);
 
-    useEffect (() => {
-        console.log(isDemo);
-    }, [isDemo]);
-
     const initialValues = {
         email: '',
         password: '',
     };
+
     const demoValues = {
         email: 'demo@gmail.com',
         password: 'demodemo',
     };
+
     const validationSchema = Yup.object().shape({
         email: Yup.string().required('Required'),
         password: Yup.string().required('Required'),
